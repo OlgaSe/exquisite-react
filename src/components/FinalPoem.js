@@ -4,16 +4,26 @@ import './FinalPoem.css';
 
 const FinalPoem = (props) => {
 
+  const sentences = props.submissions.map((sentence) => <div>{sentence}</div>)
+
+  const revealButton = (
+    <div className="FinalPoem__reveal-btn-container">
+        <input onClick={props.revealPoem} type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" />
+      </div>
+  );
+
   return (
     <div className="FinalPoem">
       <section className="FinalPoem__poem">
         <h3>Final Poem</h3>
-
+        {props.isSubmitted ? sentences : ''}
       </section>
 
+      {!props.isSubmitted ? revealButton : ''}
+      {/* 
       <div className="FinalPoem__reveal-btn-container">
-        <input type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" />
-      </div>
+        <input onClick={props.revealPoem} type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" />
+      </div> */}
     </div>
   );
 }

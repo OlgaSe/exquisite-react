@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 import './PlayerSubmissionForm.css';
 
 const PlayerSubmissionForm = (props) => {
-const [formFields, setFormFields] = useState({})
+const [formFields, setFormFields] = useState({
+  adj1: ''
+});
 
   const onInputChange = (event) => {
     const newFormFieldValues = {
@@ -18,10 +20,12 @@ const [formFields, setFormFields] = useState({})
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-    const sentence = 'The' + formFields.adj1 + formFields.noun1 + formFields.adv + formFields.verb + formFields.adj2 + formFields.noun2 + '.'
+    const sentence = 'The ' + formFields.adj1 + ' ' + formFields.noun1 + ' ' + formFields.adv + ' ' + formFields.verb + ' ' + formFields.adj2 + ' ' + formFields.noun2 + '.'
     props.sendSubmission(sentence);
     console.log(sentence);
-    setFormFields({});// clear the forms
+    setFormFields({
+      adj1: ''
+    });// clear the forms
   }
 
   return (
@@ -35,6 +39,7 @@ const [formFields, setFormFields] = useState({})
             <input name="adj1"
             placeholder="adjective"
             type="text" 
+            value={formFields.adj1}
             onChange={onInputChange}/>
 
             <input name="noun1"
