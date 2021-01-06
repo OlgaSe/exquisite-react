@@ -5,6 +5,18 @@ import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
 const Game = () => {
+  //keep the list of sentence in the Game comp,
+  const [sentenceList, setSentenceList] = useState([]);
+  //state - finished game, show Final Poem comp or RecentSubmission
+
+  const addSentence = (sentence) => {
+    const newSentenceList = [...sentenceList];
+    newSentenceList.push(sentence);
+
+    setSentenceList(newSentenceList);
+    console.log(sentenceList);
+  }
+
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
       return field.placeholder;
@@ -27,7 +39,10 @@ const Game = () => {
 
       <RecentSubmission />
 
-      <PlayerSubmissionForm />
+      <PlayerSubmissionForm 
+      index={sentenceList.length + 1} 
+      sendSubmission={addSentence} 
+      fields={FIELDS}/>
 
       <FinalPoem />
 

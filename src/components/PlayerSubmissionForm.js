@@ -3,21 +3,66 @@ import PropTypes from 'prop-types';
 
 import './PlayerSubmissionForm.css';
 
-const PlayerSubmissionForm = () => {
+const PlayerSubmissionForm = (props) => {
+const [formFields, setFormFields] = useState({})
+
+  const onInputChange = (event) => {
+    const newFormFieldValues = {
+        ...formFields,
+    }
+    newFormFieldValues[event.target.name] = event.target.value;
+
+    setFormFields(newFormFieldValues);
+  }
+
+
+  const onFormSubmit = (event) => {
+    event.preventDefault();
+    const sentence = 'The' + formFields.adj1 + formFields.noun1 + formFields.adv + formFields.verb + formFields.adj2 + formFields.noun2 + '.'
+    props.sendSubmission(sentence);
+    console.log(sentence);
+    setFormFields({});// clear the forms
+  }
+
   return (
     <div className="PlayerSubmissionForm">
-      <h3>Player Submission Form for Player #{  }</h3>
+      <h3>Player Submission Form for Player #{props.index}</h3>
 
-      <form className="PlayerSubmissionForm__form" >
+      <form className="PlayerSubmissionForm__form" onSubmit={onFormSubmit}>
 
         <div className="PlayerSubmissionForm__poem-inputs">
+            The 
+            <input name="adj1"
+            placeholder="adjective"
+            type="text" 
+            onChange={onInputChange}/>
 
-          {
-            // Put your form inputs here... We've put in one below as an example
-          }
-          <input
-            placeholder="hm..."
-            type="text" />
+            <input name="noun1"
+            placeholder="noun"
+            type="text" 
+            onChange={onInputChange}/>
+
+            <input name="adv"
+            placeholder="adverb"
+            type="text" 
+            onChange={onInputChange}/>
+
+            <input name="verb"
+            placeholder="verb"
+            type="text" 
+            onChange={onInputChange}/>
+
+            the
+            <input name="adj2"
+            placeholder="adjective"
+            type="text" 
+            onChange={onInputChange}/>
+
+            <input name="noun2"
+            placeholder="noun"
+            type="text" 
+            onChange={onInputChange}/>
+            .
 
         </div>
 
