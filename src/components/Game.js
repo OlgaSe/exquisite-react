@@ -30,6 +30,18 @@ const Game = () => {
     }
   }).join(' ');
 
+  const recentAndSubmissionComponents = (
+    <div>
+    <RecentSubmission 
+    submission={sentenceList.length > 0 ? sentenceList[sentenceList.length-1] : ''}/>
+
+    <PlayerSubmissionForm 
+    index={sentenceList.length + 1} 
+    sendSubmission={addSentence} 
+    fields={FIELDS}/>
+    </div>
+  )
+
   return (
     <div className="Game">
       <h2>Game</h2>
@@ -42,12 +54,15 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      {!isRevealedPoem ? recentAndSubmissionComponents : ''}
+
+      {/* <RecentSubmission 
+      submission={sentenceList.length > 0 ? sentenceList[sentenceList.length-1] : 'empty'}/>
 
       <PlayerSubmissionForm 
       index={sentenceList.length + 1} 
       sendSubmission={addSentence} 
-      fields={FIELDS}/>
+      fields={FIELDS}/> */}
 
       <FinalPoem 
       isSubmitted={isRevealedPoem}
