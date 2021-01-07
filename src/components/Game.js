@@ -55,15 +55,7 @@ const Game = () => {
       </p>
 
       {!isRevealedPoem ? recentAndSubmissionComponents : ''}
-
-      {/* <RecentSubmission 
-      submission={sentenceList.length > 0 ? sentenceList[sentenceList.length-1] : 'empty'}/>
-
-      <PlayerSubmissionForm 
-      index={sentenceList.length + 1} 
-      sendSubmission={addSentence} 
-      fields={FIELDS}/> */}
-
+      
       <FinalPoem 
       isSubmitted={isRevealedPoem}
       submissions={sentenceList}

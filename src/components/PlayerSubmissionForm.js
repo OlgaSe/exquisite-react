@@ -78,7 +78,6 @@ const [formFields, setFormFields] = useState(EMPTY_STATE);
             value={formFields.noun2}
             onChange={onInputChange}/>
             .
-
         </div>
 
         <div className="PlayerSubmissionForm__submit">

@@ -20,10 +20,7 @@ const FinalPoem = (props) => {
       </section>
 
       {!props.isSubmitted ? revealButton : ''}
-      {/* 
-      <div className="FinalPoem__reveal-btn-container">
-        <input onClick={props.revealPoem} type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" />
-      </div> */}
+    
     </div>
   );
 }
